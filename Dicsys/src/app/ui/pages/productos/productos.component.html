@@ -1,0 +1,35 @@
+<app-header />
+
+<div class="p-6 bg-gray-100 h-screen">
+  <div class="text-center mb-8">
+    <h1 class="text-2xl font-bold text-gray-800">{{globalText.category}}: {{nombreCategoria}}</h1>
+    <hr class="bg-black w-full">
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <article *ngFor="let prod of arrayProductosByCategorias"
+      class="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+      <div class="p-4">
+        <h2 class="text-xl font-semibold text-gray-700 mb-2">{{globalText.name}}: {{prod.nombre}}</h2>
+        <p class="text-sm text-gray-500 mb-4">{{globalText.description}}: {{prod.descripcion}}</p>
+        <div class="text-sm text-gray-700 space-y-1">
+          <p><span class="font-semibold">{{globalText.price}}:</span> ${{prod.precio}}</p>
+          <p><span class="font-semibold">{{globalText.stock}}:</span> {{prod.stock}}</p>
+        </div>
+      </div>
+      <div class="p-4 bg-gray-50 text-right">
+        <button
+          (click)="deleteProducto(prod.id)"
+          class="bg-red-500 text-white mr-4 px-4 py-2 rounded-lg hover:bg-red-600 transition-colors duration-300 font-bold">
+          Eliminar
+        </button>
+        <!-- <button
+          class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300 font-bold">
+          + {{globalText.cart}}
+        </button> -->
+      </div>
+    </article>
+  </div>
+</div>
+
+<app-footer />
